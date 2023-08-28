@@ -21,4 +21,3 @@ router
     .put("/update-profile",updateProfile)
 
 module.exports = router;
-
