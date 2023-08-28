@@ -1,9 +1,24 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const {
+  register,
+  processRegister,
+  login,
+  processLogin,
+  profile,
+  updateProfile,
+} = require("../controllers/usersController");
+const registerValidator = require("../validations/registerValidator");
+
+/* /users */
+router
+    .get("/register", register)
+    .post("/register",registerValidator, processRegister)
+    .get("/login", login)
+    .post("/login",processLogin)
+    .get("/profile", profile)
+    .put("/update-profile",updateProfile)
 
 module.exports = router;
+
